@@ -1,0 +1,28 @@
+{
+  "name": "create-agent-skill",
+  "version": "0.1.0",
+  "description": "Scaffold a Cursor/Claude-style Agent Skill (SKILL.md + folder) in one command",
+  "bin": {
+    "create-agent-skill": "./bin/create-agent-skill.js"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "agent",
+    "skill",
+    "cursor",
+    "claude",
+    "scaffold",
+    "cli"
+  ],
+  "license": "MIT",
+  "files": [
+    "bin",
+    "templates",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ]
+}
