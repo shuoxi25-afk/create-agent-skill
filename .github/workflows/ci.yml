@@ -1,0 +1,31 @@
+name: CLI checks
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: node bin/create-agent-skill.js validate examples/hello-skill
+      - run: node bin/create-agent-skill.js validate examples/meeting-notes
+      - name: Test the packed CLI in a separate project
+        shell: bash
+        run: |
+          package_file=$(npm pack --ignore-scripts --pack-destination "$RUNNER_TEMP" --silent)
+          npm install --ignore-scripts --no-audit --no-fund --prefix "$RUNNER_TEMP/consumer" "$RUNNER_TEMP/$package_file"
+          cd "$RUNNER_TEMP/consumer"
+          ./node_modules/.bin/create-agent-skill meeting-notes --template meeting-notes
+          ./node_modules/.bin/create-agent-skill validate meeting-notes
