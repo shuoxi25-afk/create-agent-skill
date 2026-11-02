@@ -1,11 +1,18 @@
 {
   "name": "create-agent-skill",
-  "version": "0.1.0",
-  "description": "Scaffold a Cursor/Claude-style Agent Skill (SKILL.md + folder) in one command",
+  "version": "0.2.0",
+  "description": "Create and validate practical Agent Skills for Claude Code, Cursor and Codex",
   "bin": {
     "create-agent-skill": "./bin/create-agent-skill.js"
   },
   "type": "commonjs",
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuoxi25-afk/create-agent-skill.git"
+  },
   "engines": {
     "node": ">=18"
   },
@@ -14,15 +21,21 @@
     "skill",
     "cursor",
     "claude",
+    "codex",
     "scaffold",
     "cli"
   ],
   "license": "MIT",
   "files": [
     "bin",
+    "lib",
     "templates",
     "examples",
     "README.md",
+    "README.zh-CN.md",
     "LICENSE"
-  ]
+  ],
+  "dependencies": {
+    "yaml": "^2.9.1"
+  }
 }
