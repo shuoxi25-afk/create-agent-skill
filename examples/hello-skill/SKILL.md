@@ -1,5 +1,5 @@
 ---
-name: Hello Skill
+name: hello-skill
 description: Use when testing create-agent-skill output or demoing a minimal agent skill.
 ---
 
